@@ -1,4 +1,4 @@
-# Python
+# Batch
 
 This repository contains a collection of projects, tools and files that I use on a daily basis, and that I continuously optimize as I gain new knowledge and experience.
 
