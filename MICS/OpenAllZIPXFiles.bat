@@ -1,23 +1,32 @@
 @echo off
-set "source_folder=D:\Org\Infrequent"
-set "destination_folder=D:\Org\Infrequent\"
+set "source_folder=N:\Temp - No Backup"
+set "destination_folder=N:\Temp - No Backup"
 set "unzip_utility=C:\Program Files\WinZip\WZUNZIP.EXE"
-set "password="
+set "password=s"
 set "total_commander=C:\totalcmd\TOTALCMD64.EXE"
 
-echo Starter udpakning af alle .zipx-filer fra %source_folder%...
+echo Starter udpakning af alle .zipx-filer fra %source_folder% med 2 minutters interval...
 echo.
 
+:: Tæller, hvor mange filer der er startet
+set /a file_count=0
+
 for %%f in ("%source_folder%\*.zipx") do (
-    echo Udpakker fil: "%%f"
-    start /wait "" "%unzip_utility%" -e -d -%password% "%%f" "%destination_folder%"
-    echo Vent 2 minutter...
-    ping localhost -n 121 > nul
+    set /a file_count+=1
+    echo Udpakker fil %file_count%: "%%f"
+
+    :: Fjernet /wait for at starte processen i baggrunden
+    start "" "%unzip_utility%" -e -d -%password% "%%f" "%destination_folder%"
+    echo DEBUG: Kalder: start "" "%unzip_utility%" -e -d -%password% "%%f" "%destination_folder%"
+
+    echo Venter 300 sec
+    :: PING bruges til at vente. -n 301 giver en ventetid p\Uffffffff (ca. 301 sekunder)
+    ping localhost -n 301 > nul
 )
 
 echo.
-echo Udpakning fuldført. Starter Total Commander...
+echo Udpakning fuldført Total Commander...
 start "" "%total_commander%" "V:\" "%destination_folder%"
 
-echo Færdig!
+echo Finish!
 pause
