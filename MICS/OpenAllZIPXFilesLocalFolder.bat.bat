@@ -8,7 +8,7 @@ set "total_commander=C:\totalcmd\TOTALCMD64.EXE"
 echo Starter udpakning af alle .zipx-filer fra %source_folder% med 2 minutters interval...
 echo.
 
-:: T\Uffffffffer, hvor mange filer der er startet
+:: Tæller, hvor mange filer der er startet
 set /a file_count=0
 
 for %%f in ("%source_folder%*.zipx") do (
