@@ -2,7 +2,7 @@
 set "source_folder=%~dp0"
 set "destination_folder=%~dp0"
 set "unzip_utility=C:\Program Files\WinZip\WZUNZIP.EXE"
-set "password=s01012004"
+set "password=s"
 set "total_commander=C:\totalcmd\TOTALCMD64.EXE"
 
 echo Starter udpakning af alle .zipx-filer fra %source_folder% med 2 minutters interval...
